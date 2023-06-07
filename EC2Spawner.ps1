@@ -142,10 +142,10 @@ function Spawn-Instance {
                 Remove-Item -Path $PasswordDataFilePath -Force
                 Write-Host "=========================================="
                 Write-Host "Password: $Password"
+                Write-Host "=========================================="
+
             }
         }
-
-        Write-Host "=========================================="
     }
 }
 
