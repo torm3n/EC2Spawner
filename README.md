@@ -1,12 +1,11 @@
 # EC2 Instance Spawner
 
-This PowerShell script allows you to easily spawn AWS EC2 instances with specified parameters. It supports choosing the Amazon Machine Image (AMI), instance type, subnet, security groups and key pairs. It also has functionality to handle and retrieve password for Windows instances.
+This a simple PowerShell script that allows you to easily spawn AWS EC2 instances from powershell. You can chosse the Amazon Machine Image (AMI), instance type, subnet, security groups and key pairs. It can also retrieve the password for Windows instances (required to connect to Windows instance through RDP).
 
 ## Prerequisites
 
 - [AWS CLI](https://aws.amazon.com/cli/) installed and configured.
 - [OpenSSL](https://www.openssl.org/) installed and configured.
-- PowerShell installed.
 - You must have necessary permissions to create and manage EC2 instances, VPCs, Subnets, KeyPairs, and Security Groups in your AWS Account.
 
 ## Parameters
@@ -45,5 +44,5 @@ Run script specifying parameters:
 
 - The script uses the default VPC if the subnet is not specified.
 - For Windows instances, it attempts to retrieve the plaintext password for RDP. The user will be prompted to specify the path to the keypair file for this.
-- Please ensure that you have necessary permissions and credits available in your AWS account to spawn instances.
+- Make sure that you have necessary permissions and credits available in your AWS account to spawn instances.
 - **Be aware of AWS costs that can incur by running instances.**
