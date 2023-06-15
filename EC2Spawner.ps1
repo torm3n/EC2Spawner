@@ -6,6 +6,15 @@ param (
     [int]$Count = 1
 )
 
+function Test-AwsAuthentication {
+    $response = & aws sts get-caller-identity
+    if ($response -match 'UserId') {
+        return $true
+    } else {
+        return $false
+    }
+}
+
 function Select-AMI {
     if ($Image) {
         if (-not (aws ec2 describe-images --image-ids $Image --query 'Images[0].ImageId' --output text)) {
@@ -147,6 +156,11 @@ function Spawn-Instance {
             }
         }
     }
+}
+
+if (!(Test-AwsAuthentication)) {
+    Write-Output "User is not authenticated. Exiting script."
+    exit
 }
 
 $DefaultVPC = aws ec2 describe-vpcs --query 'Vpcs[?IsDefault==`true`].VpcId' --output text
